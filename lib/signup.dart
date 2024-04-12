@@ -32,7 +32,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 88),
                 child: Image.asset(
-                  "assets/homepage/flashscreen.png",
+                  "assets/images/wallet_image.png",
                   width: 70,
                   height: 59,
                 ),

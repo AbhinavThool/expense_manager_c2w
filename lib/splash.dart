@@ -42,7 +42,7 @@ class _SplashScreenState extends State<Splashscreen> {
                   shape: BoxShape.circle,
                   color: Color.fromRGBO(234, 238, 235, 1),
                 ),
-                child: Image.asset("assets/homepage/flashscreen.png"),
+                child: Image.asset("assets/images/wallet_image.png"),
               ),
             ),
             const Spacer(),

@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 88),
                   child: Image.asset(
-                    "assets/homepage/flashscreen.png",
+                    "assets/images/wallet_image.png",
                     width: 70,
                     height: 59,
                   ),

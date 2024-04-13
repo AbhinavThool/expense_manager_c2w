@@ -21,188 +21,193 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 42),
-        child: SingleChildScrollView(
-          child: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 86,
+        padding: const EdgeInsets.only(left: 42, right: 42, top: 50),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(
+                height: 86,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 88),
+                child: Image.asset(
+                  "assets/images/wallet_image.png",
+                  width: 70,
+                  height: 59,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 88),
-                  child: Image.asset(
-                    "assets/images/wallet_image.png",
-                    width: 70,
-                    height: 59,
-                  ),
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                Text(
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              SizedBox(
+                width: 340,
+                child: Text(
                   "Login to your Account",
                   style: GoogleFonts.poppins(
                     textStyle: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.w500),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                decoration: const BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color.fromRGBO(0, 0, 0, 0.15),
+                      offset: Offset(0, 3),
+                      blurRadius: 10,
+                    ),
+                  ],
                 ),
-                Container(
-                  decoration: const BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                          color: Color.fromRGBO(0, 0, 0, 0.15),
-                          offset: Offset(0, 3),
-                          blurRadius: 10)
-                    ],
-                  ),
-                  child: TextFormField(
-                    controller: userNameTextEditingController,
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: const Color.fromRGBO(255, 255, 255, 1),
-                      hintText: "Username",
-                      hintStyle: GoogleFonts.poppins(
-                        textStyle: const TextStyle(
-                          color: Color.fromRGBO(0, 0, 0, 0.4),
-                          fontSize: 12,
-                        ),
-                      ),
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(8),
+                child: TextFormField(
+                  controller: userNameTextEditingController,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: const Color.fromRGBO(255, 255, 255, 1),
+                    hintText: "Username",
+                    hintStyle: GoogleFonts.poppins(
+                      textStyle: const TextStyle(
+                        color: Color.fromRGBO(0, 0, 0, 0.4),
+                        fontSize: 12,
                       ),
                     ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return "Please enter username";
-                      } else {
-                        return null;
-                      }
-                    },
-                    keyboardType: TextInputType.emailAddress,
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Please enter username";
+                    } else {
+                      return null;
+                    }
+                  },
+                  keyboardType: TextInputType.emailAddress,
                 ),
-                const SizedBox(
-                  height: 20,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                decoration: const BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color.fromRGBO(0, 0, 0, 0.15),
+                      offset: Offset(0, 3),
+                      blurRadius: 10,
+                    ),
+                  ],
                 ),
-                Container(
-                  decoration: const BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                          color: Color.fromRGBO(0, 0, 0, 0.15),
-                          offset: Offset(0, 3),
-                          blurRadius: 10)
-                    ],
-                  ),
-                  child: TextFormField(
-                    controller: passwordTextEditingController,
-                    obscureText: true,
-                    obscuringCharacter: "*",
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: const Color.fromRGBO(255, 255, 255, 1),
-                      hintText: "Password",
-                      hintStyle: GoogleFonts.poppins(
-                        textStyle: const TextStyle(
-                          color: Color.fromRGBO(0, 0, 0, 0.4),
-                          fontSize: 12,
-                        ),
-                      ),
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(8),
+                child: TextFormField(
+                  controller: passwordTextEditingController,
+                  obscureText: true,
+                  obscuringCharacter: "*",
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: const Color.fromRGBO(255, 255, 255, 1),
+                    hintText: "Password",
+                    hintStyle: GoogleFonts.poppins(
+                      textStyle: const TextStyle(
+                        color: Color.fromRGBO(0, 0, 0, 0.4),
+                        fontSize: 12,
                       ),
                     ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return "Please enter password";
-                      } else {
-                        return null;
-                      }
-                    },
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Please enter password";
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 49,
+                width: 340,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    color: const Color.fromRGBO(14, 161, 125, 1),
+                    borderRadius: BorderRadius.circular(8)),
+                child: GestureDetector(
+                  onTap: () {
+                    bool loginValidated = _formKey.currentState!.validate();
+                    if (loginValidated) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomePage(),
+                        ),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text("Login Successful"),
+                        ),
+                      );
+                    } else {
+                      null;
+                    }
+                  },
+                  child: Text(
+                    "Sign In",
+                    style: GoogleFonts.poppins(
+                      textStyle: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: Color.fromRGBO(255, 255, 255, 1)),
+                    ),
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  height: 49,
-                  width: 280,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      color: const Color.fromRGBO(14, 161, 125, 1),
-                      borderRadius: BorderRadius.circular(8)),
-                  child: GestureDetector(
-                    onTap: () {
-                      bool loginValidated = _formKey.currentState!.validate();
-                      if (loginValidated) {
+              ),
+              const Spacer(),
+              Padding(
+                padding: const EdgeInsets.all(35),
+                child: Row(
+                  children: [
+                    Text(
+                      "Don’t have an account?",
+                      style: GoogleFonts.poppins(
+                        textStyle: const TextStyle(fontSize: 12),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const HomePage(),
+                            builder: (context) => const SignUpScreen(),
                           ),
                         );
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text("Login Successful"),
+                      },
+                      child: Text(
+                        " Sign up",
+                        style: GoogleFonts.poppins(
+                          textStyle: const TextStyle(
+                            fontSize: 12,
+                            color: Color.fromRGBO(14, 161, 125, 1),
                           ),
-                        );
-                      } else {
-                        null;
-                      }
-                    },
-                    child: Text(
-                      "Sign In",
-                      style: GoogleFonts.poppins(
-                        textStyle: const TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                            color: Color.fromRGBO(255, 255, 255, 1)),
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-                const Spacer(),
-                Padding(
-                  padding: const EdgeInsets.all(35),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Don’t have an account?",
-                        style: GoogleFonts.poppins(
-                          textStyle: const TextStyle(fontSize: 12),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const SignUpScreen(),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          " Sign up",
-                          style: GoogleFonts.poppins(
-                            textStyle: const TextStyle(
-                              fontSize: 12,
-                              color: Color.fromRGBO(14, 161, 125, 1),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
         ),
       ),

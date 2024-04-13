@@ -23,11 +23,11 @@ class _HomePageState extends State<HomePage> {
   List maplist = [];
 
   List imagelist = [
-    "assets/images/icon1.png",
-    "assets/images/icon2.png",
-    "assets/images/icon3.png",
-    "assets/images/icon4.png",
-    "assets/images/icon5.png",
+    "assets/images/medicine.png",
+    "assets/images/food.png",
+    "assets/images/shopping.png",
+    "assets/images/fuel.png",
+    "assets/images/entertainment.png",
   ];
 
   List headings = [

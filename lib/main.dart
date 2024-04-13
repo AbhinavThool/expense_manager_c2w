@@ -1,3 +1,4 @@
+import 'package:expense_manager_c2w/categories.dart';
 import 'package:flutter/material.dart';
 
 import 'package:expense_manager_c2w/splash.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
       title: 'Expense Manager',
-      home: const Splashscreen(),
+      home: const CategoriesScreen(),
     );
   }
 }

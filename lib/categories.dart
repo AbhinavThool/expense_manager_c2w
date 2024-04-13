@@ -31,7 +31,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               top: 10,
             ),
             child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,14 +48,14 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                               width: 74,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
-                                color: Color.fromRGBO(140, 128, 128, 0.2),
+                                color: const Color.fromRGBO(140, 128, 128, 0.2),
                               ),
-                              child: Icon(
+                              child: const Icon(
                                 Icons.image,
                                 size: 22,
                               ),
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             Text(
                               "Add",
                               style: GoogleFonts.poppins(
@@ -169,15 +169,91 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         });
   }
 
+  void showAlertBox() {
+    showDialog(
+      barrierDismissible: false,
+      barrierColor: const Color.fromARGB(201, 0, 0, 0),
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(
+            'Delete Category',
+            style: GoogleFonts.poppins(
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          content: Text(
+            'Are you sure you want to delete the selected category?',
+            style: GoogleFonts.poppins(
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          actions: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color.fromRGBO(14, 161, 125, 1),
+                  ),
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    child: Text(
+                      'Delete',
+                      style: GoogleFonts.poppins(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color.fromRGBO(140, 128, 128, 0.2),
+                  ),
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    child: Text(
+                      'Cancel',
+                      style: GoogleFonts.poppins(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       appBar: AppBar(
         title: Text(
           "Categories",
           style: GoogleFonts.poppins(
-            textStyle: TextStyle(
+            textStyle: const TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 18,
             ),
@@ -188,190 +264,230 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         ],
       ),
       body: GridView(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           crossAxisSpacing: 24,
           mainAxisSpacing: 24,
         ),
-        padding: EdgeInsets.all(24),
+        padding: const EdgeInsets.all(24),
         children: [
           // grid child 1
-          Container(
-            width: 145,
-            height: 150,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(14),
-              boxShadow: [
-                BoxShadow(
-                  color: Color.fromRGBO(0, 0, 0, 0.15),
-                  offset: Offset(1, 2),
-                  blurRadius: 8,
-                ),
-              ],
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 74,
-                  width: 74,
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(214, 3, 3, 0.7),
-                    borderRadius: BorderRadius.circular(50),
+          GestureDetector(
+            onTap: () {
+              showCategoryBottomSheet();
+            },
+            onLongPress: () {
+              setState(() {
+                showAlertBox();
+              });
+            },
+            child: Container(
+              width: 145,
+              height: 150,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(14),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Color.fromRGBO(0, 0, 0, 0.15),
+                    offset: Offset(1, 2),
+                    blurRadius: 8,
                   ),
-                  child: Icon(
-                    Icons.soup_kitchen_outlined,
-                    color: Colors.white,
-                  ),
-                ),
-                SizedBox(height: 14),
-                Text(
-                  "Food",
-                  style: GoogleFonts.poppins(
-                    textStyle: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 74,
+                    width: 74,
+                    decoration: BoxDecoration(
+                      color: const Color.fromRGBO(214, 3, 3, 0.7),
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: const Icon(
+                      Icons.soup_kitchen_outlined,
+                      color: Colors.white,
                     ),
                   ),
-                )
-              ],
+                  const SizedBox(height: 14),
+                  Text(
+                    "Food",
+                    style: GoogleFonts.poppins(
+                      textStyle: const TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
 
           // grid child 2
-          Container(
-            width: 145,
-            height: 150,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(14),
-              boxShadow: [
-                BoxShadow(
-                  color: Color.fromRGBO(0, 0, 0, 0.15),
-                  offset: Offset(1, 2),
-                  blurRadius: 8,
-                ),
-              ],
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 74,
-                  width: 74,
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(0, 148, 255, 0.7),
-                    borderRadius: BorderRadius.circular(50),
+          GestureDetector(
+            onTap: () {
+              showCategoryBottomSheet();
+            },
+            onLongPress: () {
+              setState(() {
+                showAlertBox();
+              });
+            },
+            child: Container(
+              width: 145,
+              height: 150,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(14),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Color.fromRGBO(0, 0, 0, 0.15),
+                    offset: Offset(1, 2),
+                    blurRadius: 8,
                   ),
-                  child: Icon(
-                    Icons.soup_kitchen_outlined,
-                    color: Colors.white,
-                  ),
-                ),
-                SizedBox(height: 14),
-                Text(
-                  "Fuel",
-                  style: GoogleFonts.poppins(
-                    textStyle: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 74,
+                    width: 74,
+                    decoration: BoxDecoration(
+                      color: const Color.fromRGBO(0, 148, 255, 0.7),
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: const Icon(
+                      Icons.soup_kitchen_outlined,
+                      color: Colors.white,
                     ),
                   ),
-                )
-              ],
+                  const SizedBox(height: 14),
+                  Text(
+                    "Fuel",
+                    style: GoogleFonts.poppins(
+                      textStyle: const TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
 
           // grid child 3
-          Container(
-            width: 145,
-            height: 150,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(14),
-              boxShadow: [
-                BoxShadow(
-                  color: Color.fromRGBO(0, 0, 0, 0.15),
-                  offset: Offset(1, 2),
-                  blurRadius: 8,
-                ),
-              ],
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 74,
-                  width: 74,
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(0, 174, 91, 0.7),
-                    borderRadius: BorderRadius.circular(50),
+          GestureDetector(
+            onTap: () {
+              showCategoryBottomSheet();
+            },
+            onLongPress: () {
+              setState(() {
+                showAlertBox();
+              });
+            },
+            child: Container(
+              width: 145,
+              height: 150,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(14),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Color.fromRGBO(0, 0, 0, 0.15),
+                    offset: Offset(1, 2),
+                    blurRadius: 8,
                   ),
-                  child: Icon(
-                    Icons.soup_kitchen_outlined,
-                    color: Colors.white,
-                  ),
-                ),
-                SizedBox(height: 14),
-                Text(
-                  "Medicine",
-                  style: GoogleFonts.poppins(
-                    textStyle: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 74,
+                    width: 74,
+                    decoration: BoxDecoration(
+                      color: const Color.fromRGBO(0, 174, 91, 0.7),
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: const Icon(
+                      Icons.soup_kitchen_outlined,
+                      color: Colors.white,
                     ),
                   ),
-                )
-              ],
+                  const SizedBox(height: 14),
+                  Text(
+                    "Medicine",
+                    style: GoogleFonts.poppins(
+                      textStyle: const TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
 
           // grid child 4
-          Container(
-            width: 145,
-            height: 150,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(14),
-              boxShadow: [
-                BoxShadow(
-                  color: Color.fromRGBO(0, 0, 0, 0.15),
-                  offset: Offset(1, 2),
-                  blurRadius: 8,
-                ),
-              ],
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 74,
-                  width: 74,
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(242, 38, 197, 0.7),
-                    borderRadius: BorderRadius.circular(50),
+          GestureDetector(
+            onTap: () {
+              showCategoryBottomSheet();
+            },
+            onLongPress: () {
+              setState(() {
+                showAlertBox();
+              });
+            },
+            child: Container(
+              width: 145,
+              height: 150,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(14),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Color.fromRGBO(0, 0, 0, 0.15),
+                    offset: Offset(1, 2),
+                    blurRadius: 8,
                   ),
-                  child: Icon(
-                    Icons.soup_kitchen_outlined,
-                    color: Colors.white,
-                  ),
-                ),
-                SizedBox(height: 14),
-                Text(
-                  "Shopping",
-                  style: GoogleFonts.poppins(
-                    textStyle: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 74,
+                    width: 74,
+                    decoration: BoxDecoration(
+                      color: const Color.fromRGBO(242, 38, 197, 0.7),
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: const Icon(
+                      Icons.soup_kitchen_outlined,
+                      color: Colors.white,
                     ),
                   ),
-                )
-              ],
+                  const SizedBox(height: 14),
+                  Text(
+                    "Shopping",
+                    style: GoogleFonts.poppins(
+                      textStyle: const TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ],
@@ -391,16 +507,16 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
+              const Icon(
                 Icons.add_circle_rounded,
                 color: Colors.green,
                 size: 32,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Text(
-                "Add Tranaction",
+                "Add Category",
                 style: GoogleFonts.poppins(
                   textStyle: const TextStyle(
                     fontWeight: FontWeight.w400,

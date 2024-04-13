@@ -1,3 +1,5 @@
+import 'package:expense_manager_c2w/graph_screen.dart';
+import 'package:expense_manager_c2w/trash_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
@@ -13,6 +15,12 @@ class MyDrawer extends StatefulWidget {
 }
 
 class MyDrawerState extends State<MyDrawer> {
+  bool isTransactionToggled = false;
+  bool isGraphsToggled = false;
+  bool isCategoryToggled = false;
+  bool isTrashToggled = false;
+  bool isAboutUsToggled = false;
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -30,15 +38,21 @@ class MyDrawerState extends State<MyDrawer> {
                     Text(
                       "Expense Manager",
                       style: GoogleFonts.poppins(
-                          textStyle: const TextStyle(
-                              fontWeight: FontWeight.w600, fontSize: 16)),
+                        textStyle: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                        ),
+                      ),
                     ),
                     Text(
                       "Saves all your Transaction",
                       // maplist[index].name,
                       style: GoogleFonts.poppins(
-                          textStyle: const TextStyle(
-                              fontWeight: FontWeight.w400, fontSize: 10)),
+                        textStyle: const TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 10,
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -58,13 +72,16 @@ class MyDrawerState extends State<MyDrawer> {
                           ),
                         );
                       });
+                      isTransactionToggled = true;
                     },
                     child: Container(
                       padding: const EdgeInsets.only(left: 18),
                       height: 40,
                       width: 184,
                       decoration: BoxDecoration(
-                        color: Colors.green.shade200,
+                        color: isTransactionToggled
+                            ? Colors.green.shade200
+                            : const Color.fromARGB(255, 246, 243, 243),
                         borderRadius: const BorderRadius.only(
                           topRight: Radius.circular(20),
                           bottomRight: Radius.circular(20),
@@ -83,7 +100,9 @@ class MyDrawerState extends State<MyDrawer> {
                             "Transaction",
                             style: GoogleFonts.poppins(
                               textStyle: const TextStyle(
-                                  fontWeight: FontWeight.w400, fontSize: 16),
+                                fontWeight: FontWeight.w400,
+                                fontSize: 16,
+                              ),
                             ),
                           )
                         ],
@@ -100,11 +119,28 @@ class MyDrawerState extends State<MyDrawer> {
                   GestureDetector(
                     onTap: () {
                       Navigator.pop(context);
+                      isGraphsToggled = true;
+                      setState(() {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const GraphScreen(),
+                          ),
+                        );
+                      });
                     },
                     child: Container(
                       padding: const EdgeInsets.only(left: 18),
                       height: 40,
                       width: 184,
+                      decoration: BoxDecoration(
+                        color: isGraphsToggled
+                            ? Colors.green.shade200
+                            : const Color.fromARGB(255, 246, 243, 243),
+                        borderRadius: const BorderRadius.only(
+                          topRight: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
+                        ),
+                      ),
                       child: Row(
                         children: [
                           const Icon(
@@ -141,11 +177,21 @@ class MyDrawerState extends State<MyDrawer> {
                           ),
                         );
                       });
+                      isCategoryToggled = true;
                     },
                     child: Container(
                       padding: const EdgeInsets.only(left: 18),
                       height: 40,
                       width: 184,
+                      decoration: BoxDecoration(
+                        color: isCategoryToggled
+                            ? Colors.green.shade200
+                            : const Color.fromARGB(255, 246, 243, 243),
+                        borderRadius: const BorderRadius.only(
+                          topRight: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
+                        ),
+                      ),
                       child: Row(
                         children: [
                           const Icon(
@@ -159,7 +205,9 @@ class MyDrawerState extends State<MyDrawer> {
                             "Category",
                             style: GoogleFonts.poppins(
                               textStyle: const TextStyle(
-                                  fontWeight: FontWeight.w400, fontSize: 16),
+                                fontWeight: FontWeight.w400,
+                                fontSize: 16,
+                              ),
                             ),
                           )
                         ],
@@ -176,11 +224,28 @@ class MyDrawerState extends State<MyDrawer> {
                   GestureDetector(
                     onTap: () {
                       Navigator.pop(context);
+                      setState(() {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const TrashScreen(),
+                          ),
+                        );
+                      });
+                      isTrashToggled = true;
                     },
                     child: Container(
                       padding: const EdgeInsets.only(left: 18),
                       height: 40,
                       width: 184,
+                      decoration: BoxDecoration(
+                        color: isTrashToggled
+                            ? Colors.green.shade200
+                            : const Color.fromARGB(255, 246, 243, 243),
+                        borderRadius: const BorderRadius.only(
+                          topRight: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
+                        ),
+                      ),
                       child: Row(
                         children: [
                           const Icon(
@@ -193,9 +258,12 @@ class MyDrawerState extends State<MyDrawer> {
                           Text(
                             "Trash",
                             style: GoogleFonts.poppins(
-                                textStyle: const TextStyle(
-                                    fontWeight: FontWeight.w400, fontSize: 16)),
-                          )
+                              textStyle: const TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -210,11 +278,21 @@ class MyDrawerState extends State<MyDrawer> {
                   GestureDetector(
                     onTap: () {
                       Navigator.pop(context);
+                      isAboutUsToggled = true;
                     },
                     child: Container(
                       padding: const EdgeInsets.only(left: 18),
                       height: 40,
                       width: 184,
+                      decoration: BoxDecoration(
+                        color: isAboutUsToggled
+                            ? Colors.green.shade200
+                            : const Color.fromARGB(255, 246, 243, 243),
+                        borderRadius: const BorderRadius.only(
+                          topRight: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
+                        ),
+                      ),
                       child: Row(
                         children: [
                           const Icon(
